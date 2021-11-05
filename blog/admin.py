@@ -1,12 +1,18 @@
 from django.contrib import admin
 
-from .models import Category, Series, NormalPost, SubPost
+from .models import Category,Tag, Series, NormalPost, SubPost
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name', 'is_active']
+    list_filter = ['is_active']
 
 
 @admin.register(Series)

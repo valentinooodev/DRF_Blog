@@ -15,8 +15,21 @@ class Category(models.Model):
         ordering = ['-name']
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Tags'
+        ordering = ['-name']
+
+
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related')
+    tag = models.ManyToManyField(Tag, related_name='%(app_label)s_%(class)s_related')
     title = models.CharField(max_length=255)
     description = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='published')
@@ -63,3 +76,5 @@ class SubPost(Post):
     class Meta:
         verbose_name_plural = 'Sub Posts'
         ordering = ['-index']
+
+
