@@ -20,11 +20,11 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='published')
-    content = models.TextField()
     published = models.DateTimeField(default=timezone.now)
+    content = models.TextField()
     is_active = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -63,4 +63,3 @@ class SubPost(Post):
     class Meta:
         verbose_name_plural = 'Sub Posts'
         ordering = ['-index']
-
