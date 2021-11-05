@@ -7,13 +7,13 @@ from blog.models import Category, Series, NormalPost, SubPost
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('id', 'username')
-        object = User
+        model = User
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         fields = ['id', 'name', 'slug']
-        object = Category
+        model = Category
 
 
 class SeriesSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class SeriesSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = ('id', 'title', 'slug', 'created', 'updated', 'category')
-        object = Series
+        model = Series
 
 
 class NormalPostSerializer(serializers.ModelSerializer):
@@ -31,7 +31,7 @@ class NormalPostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'is_active', 'created', 'updated',
                   'author', 'category')
-        object = NormalPost
+        model = NormalPost
 
 
 class SubPostSerializer(serializers.ModelSerializer):
@@ -39,6 +39,7 @@ class SubPostSerializer(serializers.ModelSerializer):
     series = SeriesSerializer()
 
     class Meta:
-        fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'is_active', 'created', 'updated', 'index', 'author', 'series')
-        object = SubPost
+        fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'is_active', 'created', 'updated',
+                  'index', 'author', 'series')
+        model = SubPost
 
