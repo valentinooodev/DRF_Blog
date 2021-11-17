@@ -41,7 +41,7 @@ class SeriesAdmin(admin.ModelAdmin):
 
 @admin.register(NormalPost)
 class NormalPostAdmin(admin.ModelAdmin):
-    forms = NormalPostForm
+    form = NormalPostForm
     list_display = ['author', 'category', 'title', 'is_active', 'created', 'updated']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ['is_active', 'author', 'category']

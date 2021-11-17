@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -35,7 +36,7 @@ class Post(models.Model):
     description = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='published')
     published = models.DateTimeField(default=timezone.now)
-    content = RichTextField()
+    content = RichTextUploadingField()
     is_active = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

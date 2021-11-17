@@ -36,7 +36,7 @@ class NormalPostSerializer(serializers.ModelSerializer):
     tag = TagSerializer(many=True)
 
     class Meta:
-        fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'is_active', 'created', 'updated',
+        fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'created', 'updated',
                   'author', 'category', 'tag')
         model = NormalPost
 
@@ -47,7 +47,7 @@ class SubPostSerializer(serializers.ModelSerializer):
     tag = TagSerializer(many=True)
 
     class Meta:
-        fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'is_active', 'created', 'updated',
+        fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'created', 'updated',
                   'index', 'author', 'series', 'tag')
         model = SubPost
 
