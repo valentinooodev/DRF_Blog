@@ -1,6 +1,24 @@
 from django.contrib import admin
+from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-from .models import Category,Tag, Series, NormalPost, SubPost
+from .models import Category, Tag, Series, NormalPost, SubPost
+
+
+class NormalPostForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
+
+    class Meta:
+        model = NormalPost
+        fields = '__all__'
+
+
+class SubPostForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
+
+    class Meta:
+        model = SubPost
+        fields = '__all__'
 
 
 @admin.register(Category)
@@ -23,13 +41,17 @@ class SeriesAdmin(admin.ModelAdmin):
 
 @admin.register(NormalPost)
 class NormalPostAdmin(admin.ModelAdmin):
-    list_display = ['author','category', 'title', 'is_active', 'created', 'updated']
+    forms = NormalPostForm
+    list_display = ['author', 'category', 'title', 'is_active', 'created', 'updated']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ['is_active', 'author', 'category']
 
 
+
 @admin.register(SubPost)
 class SubPostAdmin(admin.ModelAdmin):
-    list_display = ['author', 'series','title','index', 'is_active', 'created', 'updated']
+    forms = SubPostForm
+    list_display = ['author', 'series', 'title', 'index', 'is_active', 'created', 'updated']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ['is_active', 'author', 'series']
+
