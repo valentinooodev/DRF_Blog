@@ -128,7 +128,6 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/'),
@@ -154,4 +153,3 @@ REST_FRAMEWORK = {
     #     'rest_framework.authentication.BasicAuthentication',
     # ),
 }
-
