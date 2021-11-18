@@ -16,4 +16,5 @@ urlpatterns = [
     path('categories/<int:pk>', CategoryDetailAPIView.as_view()),
     path('tags/', TagListAPIView.as_view()),
     path('posts/', NormalPostListAPIView.as_view()),
+    path('posts/<int:pk>', NormalPostDetailAPIView.as_view()),
 ]

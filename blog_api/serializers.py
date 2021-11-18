@@ -18,7 +18,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ['id', 'name', 'slug']
+        fields = ['id', 'name', 'description', 'image']
         model = Category
 
 
@@ -50,4 +50,3 @@ class SubPostSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'description', 'slug', 'content', 'published', 'created', 'updated',
                   'index', 'author', 'series', 'tag')
         model = SubPost
-

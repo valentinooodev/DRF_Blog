@@ -47,11 +47,9 @@ class NormalPostAdmin(admin.ModelAdmin):
     list_filter = ['is_active', 'author', 'category']
 
 
-
 @admin.register(SubPost)
 class SubPostAdmin(admin.ModelAdmin):
     forms = SubPostForm
     list_display = ['author', 'series', 'title', 'index', 'is_active', 'created', 'updated']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ['is_active', 'author', 'series']
-
