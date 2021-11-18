@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
+
 from slugify import unique_slugify
+
 
 
 class Category(models.Model):

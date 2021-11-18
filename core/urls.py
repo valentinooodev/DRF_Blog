@@ -24,4 +24,5 @@ urlpatterns = [
     path('api/v1/', include('blog_api.urls', namespace='blog_api')),
     re_path(r'ckeditor/', include('ckeditor_uploader.urls')),
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
